@@ -1,7 +1,7 @@
 title: "CaliCrush"
 email: "your-email@example.com"
 description: "West Coast Smash Burgers & Shakes"
-baseurl: "/CaliCrush-ClassicOrderTaking" # Must match your exact GitHub repository name starting with a slash
+baseurl: "/CaliCrush-WhatsAppOrderTaking" # Must match your exact GitHub repository name starting with a slash
 url: "https://Khisal786.github.io"
 
 # Build settings
