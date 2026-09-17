@@ -174,6 +174,7 @@ description: "Fresh-pressed 100% Angus beef smash burgers, crispy truffle fries,
 <script>
   let cart = [];
   let tableNumber = "1";
+  const RESTAURANT_WHATSAPP = "923049999325"; // Target WhatsApp number without '+'
 
   document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -292,21 +293,43 @@ description: "Fresh-pressed 100% Angus beef smash burgers, crispy truffle fries,
     if (cart.length === 0) return;
     
     const finalItemsSnapshot = [...cart];
-    
+    let totalPrice = finalItemsSnapshot.reduce((sum, item) => sum + (item.price * item.qty), 0);
     const randomOrderNum = '#' + Math.floor(100 + Math.random() * 900);
+    
+    // Construct WhatsApp Message Text
+    let message = `🍔 *NEW TABLE ORDER* 🍔\n`;
+    message += `Order ID: ${randomOrderNum}\n`;
+    message += `Table Number: ${tableNumber}\n`;
+    message += `------------------\n`;
+    
+    finalItemsSnapshot.forEach(item => {
+      message += `• ${item.qty}x ${item.name} ($${(item.price * item.qty).toFixed(2)})\n`;
+    });
+    
+    message += `------------------\n`;
+    message += `*Total Amount: $${totalPrice.toFixed(2)}*`;
+
+    // Encode message for URL use
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${RESTAURANT_WHATSAPP}?text=${encodedMessage}`;
+
+    // Update Modal View to show confirmation state before opening WhatsApp
     document.getElementById('passOrderNum').innerText = randomOrderNum;
     document.getElementById('passTableNum').innerText = tableNumber;
 
     const summaryEl = document.getElementById('passItemsSummary');
     summaryEl.innerHTML = '';
-    
     finalItemsSnapshot.forEach(item => {
       summaryEl.innerHTML += `<div>• ${item.qty}x ${item.name} ($${(item.price * item.qty).toFixed(2)})</div>`;
     });
 
     document.getElementById('cartModalBody').style.display = 'none';
     document.getElementById('orderPassBody').style.display = 'block';
-    
+
+    // Open WhatsApp link in a new tab/window
+    window.open(whatsappUrl, '_blank');
+
+    // Clear cart after dispatching
     cart = [];
     updateCartUI();
   }
@@ -337,7 +360,7 @@ description: "Fresh-pressed 100% Angus beef smash burgers, crispy truffle fries,
     let startX, startY, initialX, initialY;
 
     function dragStart(e) {
-      if (e.target.tagName === 'BUTTON') return; // let view button click work normally
+      if (e.target.tagName === 'BUTTON') return; 
       isDragging = true;
       bubble.style.cursor = 'grabbing';
       
@@ -351,7 +374,6 @@ description: "Fresh-pressed 100% Angus beef smash burgers, crispy truffle fries,
       initialX = rect.left;
       initialY = rect.top;
       
-      // Switch from bottom/right positioning to fixed left/top tracking
       bubble.style.bottom = 'auto';
       bubble.style.right = 'auto';
       bubble.style.left = initialX + 'px';
@@ -370,7 +392,6 @@ description: "Fresh-pressed 100% Angus beef smash burgers, crispy truffle fries,
       let newX = initialX + dx;
       let newY = initialY + dy;
       
-      // Keep bubble within safe screen padding bounds
       const maxX = window.innerWidth - bubble.offsetWidth - 10;
       const maxY = window.innerHeight - bubble.offsetHeight - 10;
       
