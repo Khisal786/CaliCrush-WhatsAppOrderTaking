@@ -1,0 +1,17 @@
+// Colors (Optimized for Fast-Casual Food Brand)
+$primary-color: #ff4757; // Punchy red/orange CTA accent
+$secondary-color: #ffa502; // Warm amber for ratings & highlights
+$text-color: #f1f2f6; // Crisp light text for dark theme
+$background-color: #121214; // Rich matte dark background
+$light-bg: #1a1a1e; // Surface cards background
+
+// Typography
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$base-font-size: 16px;
+$line-height-base: 1.6;
+
+// Mobile-First Breakpoints (Min-width approach)
+$screen-sm: 576px;  // Large phones / small tablets
+$screen-md: 768px;  // Tablets
+$screen-lg: 992px;  // Laptops / Desktops
+$screen-xl: 1200px; // Large Desktops

@@ -1,0 +1,35 @@
+title: "CaliCrush"
+email: "your-email@example.com"
+description: "West Coast Smash Burgers & Shakes"
+baseurl: "/CaliCrush-ClassicOrderTaking" # Must match your exact GitHub repository name starting with a slash
+url: "https://Khisal786.github.io"
+
+# Build settings
+markdown: kramdown
+# theme: minima # We can override this or build custom layouts from scratch
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SEO & Geo-Targeting Defaults
+author:
+  name: "Khisal Iftikhar"
+  email: "your-email@domain.com"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+sass:
+  style: compressed
+  sass_dir: _sass
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle
+  - vendor/cache

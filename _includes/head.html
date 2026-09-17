@@ -1,0 +1,66 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Mobile-First Viewport Tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Page Title & Primary Meta Description -->
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}West Coast Smash Burgers, crispy truffle fries, and hand-spun shakes in Los Angeles, CA.{% endif %}">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+
+  <!-- Robots & Crawlers Directives -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Geo-Targeting Meta Tags (Updated for Los Angeles, California) -->
+  <meta name="geo.region" content="US-CA">
+  <meta name="geo.placename" content="Los Angeles">
+  <meta name="geo.position" content="34.0522;-118.2437">
+  <meta name="ICBM" content="34.0522, -118.2437">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}West Coast Smash Burgers, crispy truffle fries, and hand-spun shakes in Los Angeles, CA.{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ '/assets/images/1.jpeg' | absolute_url }}">
+
+  <!-- Twitter Card Data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}West Coast Smash Burgers, crispy truffle fries, and hand-spun shakes in Los Angeles, CA.{% endif %}">
+  <meta name="twitter:image" content="{{ '/assets/images/1.jpeg' | absolute_url }}">
+
+  <!-- Stylesheet Links -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+  <!-- Jekyll SEO Tag Plugin Integration -->
+  {% seo %}
+
+  <!-- Local Business Structured Data (JSON-LD for Los Angeles, California) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}{{ site.baseurl }}",
+    "image": "{{ '/assets/images/1.jpeg' | absolute_url }}",
+    "servesCuisine": "Fast Food, Smash Burgers, American",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "California"
+    }
+  }
+  </script>
+</head>
